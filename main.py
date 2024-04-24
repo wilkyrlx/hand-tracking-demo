@@ -1,8 +1,6 @@
 import cv2
 import mediapipe as mp
 
-
-
 class handTracker():
     def __init__(self, mode=False, maxHands=2, detectionCon=0.5,modelComplexity=1,trackCon=0.5):
         self.mode = mode
@@ -37,7 +35,7 @@ class handTracker():
                 cx,cy = int(lm.x*w), int(lm.y*h)
                 lmlist.append([id,cx,cy])
             if draw:
-                cv2.circle(image,(cx,cy), 15 , (0,0,255), cv2.FILLED)
+                cv2.circle(image,(cx,cy), 10 , (255,255,255), cv2.FILLED)
 
         return lmlist
 
@@ -50,7 +48,7 @@ def main():
         image = tracker.handsFinder(image)
         lmList = tracker.positionFinder(image)
         if len(lmList) != 0:
-            print(lmList[4])
+            print(lmList[20])
 
         cv2.imshow("Video",image)
         cv2.waitKey(1)
